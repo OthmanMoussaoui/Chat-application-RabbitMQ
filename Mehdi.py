@@ -4,9 +4,11 @@ from threading import Thread
 from tkinter import *
 from tkinter import messagebox
 from PIL import Image,ImageDraw,ImageGrab,ImageTk
-
-url = "amqps://kldqaapz:lqFOJ_g3ElJAq3vpYvR56ajj1Rkkog0t@albatross.rmq.cloudamqp.com/kldqaapz"
+#you can use localhost or url of ccloudamqp
+url = "your url"
 params = pika.URLParameters(url)
+
+#you don't need this if it's local host 
 params.socket_timeout = 5
 
 def receiver():
@@ -63,8 +65,6 @@ lbl = Label(head, text="Hello this is an app to message using RabbitmQ", font=("
 lbl.grid(column=0, row=1,sticky='nsew')
 
 
-#Apresenta o texto na tela  
-
 
 messages_frame = Frame(nk)
 scrollbar = Scrollbar(messages_frame)
@@ -75,7 +75,6 @@ msg_list.grid(row=0,column=0, pady = 5, padx = 5)
 messages_frame.grid(row=1,column=0, pady = 5, padx = 5)
 
 
-#Recebe os valores do usuario com a caixa de texto
 
 botao_frame = Frame(nk)
 lb = Label(botao_frame,text = "enter your message : ")
@@ -84,7 +83,7 @@ entry_field = Entry(botao_frame, textvariable = '')
 #entry_field.bind("<Return>", send)
 entry_field.grid(row=0,column=1, pady = 5, padx = 5,sticky='nsew')
 
-#Botões, envia e sair
+
 
 send_button = Button(botao_frame, text= "Send", command= send)
 send_button.grid(row=0,column=3, pady = 5, padx = 5)

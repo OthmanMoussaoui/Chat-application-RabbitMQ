@@ -5,8 +5,11 @@ from tkinter import *
 from tkinter import messagebox
 from PIL import Image,ImageDraw,ImageGrab,ImageTk
 
-url = "amqps://kldqaapz:lqFOJ_g3ElJAq3vpYvR56ajj1Rkkog0t@albatross.rmq.cloudamqp.com/kldqaapz"
+#you can use localhost or url of ccloudamqp
+url = "your url"
 params = pika.URLParameters(url)
+
+#you don't need this if it's local host 
 params.socket_timeout = 5
 
 
@@ -43,7 +46,6 @@ def send():
     channel.basic_publish(exchange='', routing_key='task_queue1', body= live)    
     connection.close()
     
-#instancé  TK (jan)
 
 jan = Tk()
 jan.title("Otana")
